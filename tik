@@ -1,0 +1,149 @@
+import time
+import os as o
+
+o.system('cls')
+move = "0"
+def clear(tStr1, tStr2, tStr3, tStr4, tStr5, tStr6):
+    o.system('cls')
+    print("Rules of play:")
+    print("1. Try to get four in a row to win")
+    print("2. Select your row by selecting numbers 1-7")
+    print("3. Players will go in turn after being prompted by  'Player 1:' and 'Player 2:'")
+    print("4. Press enter to end turn\n")
+    print("                                 _      __")
+    print("                                | |    / _|")
+    print("   __ ___  _ __  _ __   ___  ___| |_  | |_ ___  _   _ _ __")
+    print(" / __/ _ \| '_ \| '_ \ / _ \/ __| __| |  _/ _ \| | | | '__|")
+    print(" |(_| (_) | | | | | | |  __/ (__| |_  | || (_) | |_| | |")
+    print(" \___\___/|_| |_|_| |_|\___|\___|\__| |_| \___/ \__,_|_|")
+
+    print("")
+    print("")
+    print("")
+    print("._________________________________.")
+    print(tStr1)
+    print(tStr2)
+    print(tStr3)
+    print(tStr4)
+    print(tStr5)
+    print(tStr6)
+    print(" ‾|‾|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|‾|‾")
+    print("  ‾‾‾                         ‾‾‾")
+
+tStr1 = ["_", "_", "_", "_", "_", "_", "_"]
+tStr2 = ["_", "_", "_", "_", "_", "_", "_"]
+tStr3 = ["_", "_", "_", "_", "_", "_", "_"]
+tStr4 = ["_", "_", "_", "_", "_", "_", "_"]
+tStr5 = ["_", "_", "_", "_", "_", "_", "_"]
+tStr6 = ["_", "_", "_", "_", "_", "_", "_"]
+
+def checkMoveP1(move):
+    if tStr6[int(move) - 1] == "_":
+        tStr6[int(move) - 1]  = "X"
+    elif tStr5[int(move) - 1] == "_":
+        tStr5[int(move) - 1] = "X"
+    elif tStr4[int(move) - 1] == "_":
+        tStr4[int(move) - 1] = "X"
+    elif tStr3[int(move) - 1] == "_":
+        tStr3[int(move) - 1] = "X"
+    elif tStr2[int(move) - 1] == "_":
+        tStr2[int(move) - 1] = "X"
+    elif tStr1[int(move) - 1] == "_":
+        tStr1[int(move) - 1] = "X"
+
+def checkMoveP2(move2):
+    if tStr6[int(move2) - 1] == "_":
+        tStr6[int(move2) - 1] = "O"
+    elif tStr5[int(move2) - 1] == "_":
+        tStr5[int(move2) - 1] = "O"
+    elif tStr4[int(move2) - 1] == "_":
+        tStr4[int(move2) - 1] = "O"
+    elif tStr3[int(move2) - 1] == "_":
+        tStr3[int(move2) - 1] = "O"
+    elif tStr2[int(move2) - 1] == "_":
+        tStr2[int(move2) - 1] = "O"
+    elif tStr1[int(move2) - 1] == "_":
+        tStr1[int(move2) - 1] = "O"
+
+def p1move():
+    move = input("Player 1: ")
+
+    if move == "1":
+        checkMoveP1(int(move))
+    elif move == "2":
+        checkMoveP1(int(move))
+    elif move == "3":
+        checkMoveP1(int(move))
+    elif move == "4":
+        checkMoveP1(int(move))
+    elif move == "5":
+        checkMoveP1(int(move))
+    elif move == "6":
+        checkMoveP1(int(move))
+    elif move == "7":
+        checkMoveP1(int(move))
+    else:
+        print("Only type numbers 1-7. Please refresh to restart.")
+
+def p2move():
+    move2 = input("Player 2: ")
+
+    if move2 == "1":
+        checkMoveP2(int(move2))
+    elif move2 == "2":
+        checkMoveP2(int(move2))
+    elif move2 == "3":
+        checkMoveP2(int(move2))
+    elif move2 == "4":
+        checkMoveP2(int(move2))
+    elif move2 == "5":
+        checkMoveP2(int(move2))
+    elif move2 == "6":
+        checkMoveP2(int(move2))
+    elif move2 == "7":
+        checkMoveP2(int(move2))
+    else:
+        print("Only type numbers 1-7. Please refresh to restart.")
+
+win = False
+stop = False
+
+def checkWinHorisontal(win):
+    for i in range(0, 3) == "X": #<----- FIX THIS
+        win = True
+    elif tStr2[range(1, 4)] == "X":
+        win = True
+    elif tStr3[range(1, 4)] == "X":
+        win = True
+    elif tStr4[range(1, 4)] == "X":
+        win = True
+    elif tStr5[range(1, 4)] == "X":
+        win = True
+    elif tStr6[range(1, 4)] == "X":
+        win = True
+
+    if tStr1[range(2, 5)] == "X":
+        win = True
+    elif tStr2[range(2, 5)] == "X":
+        win = True
+    elif tStr3[range(2, 5)] == "X":
+        win = True
+    elif tStr4[range(2, 5)] == "X":
+        win = True
+    elif tStr5[range(2, 5)] == "X":
+        win = True
+    elif tStr6[range(2, 5)] == "X":
+        win = True
+
+while win == False and stop == False:
+    for x in "100000000":
+        clear(tStr1, tStr2, tStr3, tStr4, tStr5, tStr6)
+        p1move()
+        clear(tStr1, tStr2, tStr3, tStr4, tStr5, tStr6)
+        p2move()
+        checkWinHorisontal(win)
+
+if win == True:
+    print("You win!")
+else:
+    print("It's a draw.")
